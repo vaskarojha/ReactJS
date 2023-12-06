@@ -20,7 +20,7 @@ function AddTodo() {
             value={input}
             onChange={(e)=>setInput(e.target.value)}
             />
-            <button type='submit' />
+            <button type='submit' placeholder='submit'>Add</button>
         </form>
     </div>
   )
