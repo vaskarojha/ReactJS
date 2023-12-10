@@ -1,15 +1,14 @@
 import React, {createContext} from "react"
 import Profile from "./components/Profile"
-
-export const loginContext = createContext()
+import LoginContextProvider from "./contexts/LoginContextProvider"
 
 function App() {
   return (
-    <loginContext.Provider value={true}>
+    <LoginContextProvider>
     <>
     <Profile/>
     </>
-    </loginContext.Provider>
+    </LoginContextProvider>
   )
 }
 

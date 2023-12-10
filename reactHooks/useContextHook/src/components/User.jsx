@@ -1,8 +1,8 @@
 import React, {useContext} from 'react'
-import {loginContext} from '../App'
+import {LoginContext} from '../contexts/LoginContextProvider'
 
 function User() {
-const login = useContext(loginContext)
+const login = useContext(LoginContext)
   return (
     <div>
         <h1>User Profile</h1>
