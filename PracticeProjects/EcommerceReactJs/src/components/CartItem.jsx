@@ -1,8 +1,8 @@
 import React from 'react'
 
-function CartItem() {
+function CartItem({item}) {
   return (
-    <div>CartItem</div>
+    <div>{item.title}</div>
   )
 }
 
