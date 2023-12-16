@@ -17,15 +17,7 @@ function CartItem({item}) {
         <Link to={`/product/${id}`} className='text-sm uppercase font-medium max-w-[240px] text-primary hover:underline'>{title}</Link>
         </div>
         <div className='bg-blue-300 flex gap-x-2 h-[36px]'>
-        <div>
-          Quantity
-        </div>
-        <div>
-          item price
-        </div>
-        <div>
-          final price
-        </div>
+
         </div>
         <div className='cursor-pointer '>
           <span className='text-xl text-red-500'>REMOVE</span>

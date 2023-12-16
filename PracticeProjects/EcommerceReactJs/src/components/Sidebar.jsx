@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
 import CartItem from './CartItem'
 import { SidebarContext } from '../contexts/SidebarContex'
 
@@ -19,6 +18,7 @@ function Sidebar() {
         </div>
       </div>
       <div>
+        {}
         {cart.map((item)=>{
           return <CartItem item = {item} key={item.it}/>
         })}
