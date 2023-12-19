@@ -77,7 +77,55 @@ export class Service{
         }
     }
 
+    async getPosts(queries = [Query.equal("status", "active")]){
+        try{
+            return await this.databases.listDocuments(
+                Config.appwriteDatabaseId,
+                Config.appwriteCollectionId,
+                queries,
+                
+            )
+             } catch(err){
+            console.log(err)
+        }
+    }
+    async uploadFile(file){
+        try{
+            return await this.bucket.createFile(
+                conf.appwriteBucketId,
+                ID.unique(),
+                file,
 
+            )
+        } catch(err){
+            console.log(err)
+            return false
+        }
+    }
+
+    async deleteFile(fileId){
+        try{
+            await this.bucket.deleteFile(
+                Config.appwriteBucketId,
+                fileId,
+            )
+            return true
+        } catch(err){
+            console.log(err)
+            return false
+        }
+    }
+
+    async getFiePreview(){
+        try{
+            await this.getFiePreview(fileId){
+                return this.bucket.getFilePreview(Config.appwriteBucketId,fileId)
+            }
+        } catch(err){
+            console.log(err)
+            return false
+        }
+    }
 }
 
 const service = new Service()
