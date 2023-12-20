@@ -116,10 +116,10 @@ export class Service{
         }
     }
 
-    async getFiePreview(){
+    async getFilePreview(fileId){
         try{
-            await this.getFiePreview(fileId){
-                return this.bucket.getFilePreview(Config.appwriteBucketId,fileId)
+            await this.getFilePreview(fileId){
+            return this.bucket.getFilePreview(Config.appwriteBucketId, fileId)
             }
         } catch(err){
             console.log(err)
