@@ -1,4 +1,4 @@
-import Config from '../config.js'
+import Config from '../config/config.js'
 import {Client,Databases, Storage, Query, ID} from 'appwrite'
 
 export class Service{
@@ -7,8 +7,8 @@ export class Service{
     bucket;
 
     constructor(){
-        this.client.setEndpoint(Config.appwriteUrl)
-        .setProject(Config.appwriteProject);
+        this.client.setEndpoint(Config.appWriteUrl)
+        .setProject(Config.appWriteProjectId);
         this.databases = new Databases(this.client);
         this.bucket = new Storage(this.client)
 
@@ -17,8 +17,8 @@ export class Service{
     async createPost({title, slug, content, featuredImage, status, userId}){
        try{
          return await this.databases.createDocument
-                Config.appwriteDatabaseId
-                Config.appwriteCollectionId
+                Config.appWriteDbId
+                Config.appWriteCollectionId
                 slug,
                 {
                     title,
@@ -35,8 +35,8 @@ export class Service{
     async updatePost(slug,{title, content, featuredImage, status}){
         try{
             return await this.databases.updateDocument(
-                Config.appwriteDatabaseId,
-                Config.appwriteCollectionId,
+                Config.appWriteDbId,
+                Config.appWriteCollectionId,
                 slug,
                 {
                     title,
@@ -53,8 +53,8 @@ export class Service{
     async deletePost(){
         try{
             await this.databases.deleteDocument(
-                Config.appwriteDatabaseId,
-                Config.appwriteCollectionId,
+                Config.appWriteDbId,
+                Config.appWriteCollectionId,
                 slug,
             )
             return true;
@@ -67,8 +67,8 @@ export class Service{
     async getPost(slug){
         try{
             return await this.databases.getDocument(
-                Config.appwriteDatabaseId,
-                Config.appwriteCollectionId,
+                Config.appWriteDbId,
+                Config.appWriteCollectionId,
                 slug,
             )
         } catch(err){
@@ -80,8 +80,8 @@ export class Service{
     async getPosts(queries = [Query.equal("status", "active")]){
         try{
             return await this.databases.listDocuments(
-                Config.appwriteDatabaseId,
-                Config.appwriteCollectionId,
+                Config.appWriteDbId,
+                Config.appWriteCollectionId,
                 queries,
                 
             )
@@ -106,7 +106,7 @@ export class Service{
     async deleteFile(fileId){
         try{
             await this.bucket.deleteFile(
-                Config.appwriteBucketId,
+                Config.appWriteBucketId,
                 fileId,
             )
             return true
@@ -118,10 +118,10 @@ export class Service{
 
     async getFilePreview(fileId){
         try{
-            await this.getFilePreview(fileId){
-            return this.bucket.getFilePreview(Config.appwriteBucketId, fileId)
+            await this.getFilePreview(fileId)
+            return this.bucket.getFilePreview(Config.appWriteBucketId, fileId)
             }
-        } catch(err){
+         catch(err){
             console.log(err)
             return false
         }

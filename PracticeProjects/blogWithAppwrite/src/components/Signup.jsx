@@ -4,7 +4,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import {login} from "../store/authSlice"
 import {Button, Input} from './index'
 import { useDispatch } from 'react-redux'
-import useForm from 'react-hook-form'
+import {useForm} from 'react-hook-form'
 
 function Signup() {
     const navigate = useNavigate()
@@ -12,7 +12,7 @@ function Signup() {
     const dispatch = useDispatch()
     const {register, handleSubmit} = useForm()
 
-    const creat = async(data) =>{
+    const create = async(data) =>{
         setError("")
         try{
             const userData = await authService.createAccount(data)
