@@ -6,7 +6,7 @@ import Login from "../Login";
 import Signup from "../Signup";
 import Post from "./Post";
 import PostForm from "./post-form/PostForm";
-
+import AuthLayout from "./AuthLayout"
 export {
     Header,
     Footer,
@@ -17,5 +17,6 @@ export {
     Select,
     Signup,
     Post,
-    PostForm
+    PostForm,
+    AuthLayout
 }
